@@ -1,9 +1,6 @@
 
 $(document).ready(function(){
 
-	// Calling our plugin with a page id and an access token
-	// that you will need to generate as explained in the tutorial:
-	
 	$('#wall').facebookWall({
 		id:'183085105085965',
 		access_token:'696218107137240|CyiIT4XBHqA7ia2U5XBQHdrgs3I'
@@ -11,8 +8,6 @@ $(document).ready(function(){
 
 });
 
-// Creating our plugin. You can optionally
-// place it in a separate file.
 
 (function($){
 	
@@ -28,10 +23,10 @@ $(document).ready(function(){
 			throw new Error('You need to provide an access token!');
 		}
 		
-		// Default options of the plugin:
+		
 		
 		options = $.extend({
-			limit: 50	// You can also pass a custom limit as a parameter.
+			limit: 50	// post limit.
 		},options);
 
 		// Putting together the Facebook Graph API URLs:
@@ -62,8 +57,7 @@ $(document).ready(function(){
 				// easier to generate the templates:
 				this.from.picture = fb.user.picture.data.url;
 				
-				// Converting the created_time (a UNIX timestamp) to
-				// a relative time offset (e.g. 5 minutes ago):
+				
 				this.created_time = relativeTime(this.created_time*1000);
 				
 				// Converting URL strings to actual hyperlinks:
@@ -93,8 +87,6 @@ $(document).ready(function(){
 	}
 
 	function relativeTime(time){
-		
-		// Adapted from James Herdman's http://bit.ly/e5Jnxe
 		
 		var period = new Date(time);
 		var delta = new Date() - period;
